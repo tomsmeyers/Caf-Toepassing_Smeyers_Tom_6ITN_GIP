@@ -17,7 +17,7 @@ namespace CaféToepassing_Domain.Persistence
 			MySqlConnection conn = new MySqlConnection(connectionstring);
 
 			//Het SQL-commando definiëren
-			MySqlCommand cmd = new MySqlCommand("select * from cafétoepassing_smeyers_tom_gip.bestelling", conn); //testje
+			MySqlCommand cmd = new MySqlCommand("select * from cafétoepassing_smeyers_tom_gip.bestelling", conn);
 
 			List<Bestelling> BestellingLijst = new List<Bestelling>();
 			conn.Open();
