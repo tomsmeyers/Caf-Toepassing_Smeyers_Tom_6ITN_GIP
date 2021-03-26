@@ -1,0 +1,28 @@
+﻿<Window x:Class="CaféToepassing_WPF.Eigenaar"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CaféToepassing_WPF"
+        mc:Ignorable="d"
+        Title="Eigenaar" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="btnTafels" Content="Geef tafels weer" HorizontalAlignment="Left" Margin="169,66,0,0" VerticalAlignment="Top" Width="137" Height="42" Click="btnTafels_Click"/>
+        <Button x:Name="btnBestellingen"  Content="Geef Bestellingen weer" HorizontalAlignment="Left" Margin="169,19,0,0" VerticalAlignment="Top" Width="135" Height="42" Click="btnBestellingen_Click"/>
+        <Button x:Name="btnProducten"  Content="Geef producten weer" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top" Width="154" Height="40" Click="btnProducten_Click"/>
+        <Button x:Name="btnProductenInBestelling"  Content="Geef Producten in bestelling " HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Width="154" Height="42" Click="btnProductenInBestelling_Click"/>
+
+        <Button x:Name="btnVoegTafelToe" Content="Voeg tafel toe" HorizontalAlignment="Left" Margin="671,66,0,0" VerticalAlignment="Top" Width="79" Height="49" Click="btnVoegTafelToe_Click"/>
+        <Button x:Name="btnVoegProductToe" Content="Voeg product toe" HorizontalAlignment="Left" Margin="671,12,0,0" VerticalAlignment="Top" Width="79" Height="49" Click="btnVoegProductToe_Click"/>
+
+        <ListBox x:Name="lbxCaféToepassing" HorizontalAlignment="Left" Height="290" Margin="10,120,0,0" VerticalAlignment="Top" Width="774"/>
+
+        <TextBox x:Name="tbxPrijs" HorizontalAlignment="Left" Height="23" Margin="546,29,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lblPrijs" Content="Prijs:" HorizontalAlignment="Left" Margin="512,29,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.22,0.542"/>
+        <TextBox x:Name="tbxProductNaam" HorizontalAlignment="Left" Height="23" Margin="387,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lblProductNaam" Content="Productnaam:" HorizontalAlignment="Left" Margin="304,29,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.22,0.542"/>
+
+        <TextBox x:Name="tbxPositie" HorizontalAlignment="Left" Height="23" Margin="546,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lblPositie" Content="Positie:" HorizontalAlignment="Left" Margin="501,78,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.22,0.542"/>
+    </Grid>
+</Window>
