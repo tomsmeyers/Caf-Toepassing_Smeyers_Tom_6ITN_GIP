@@ -22,7 +22,7 @@ namespace CaféToepassing_WPF
     public partial class Gebruiker : Window
     {
         private Controller _controller;
-        Bestelling _bestelling1;
+        
         public Gebruiker()
         {
             InitializeComponent();
@@ -31,8 +31,8 @@ namespace CaféToepassing_WPF
         }
         private void btnVoegBestellingToe_Click(object sender, RoutedEventArgs e)
         {
-            _bestelling1 = new Bestelling(Convert.ToDateTime(tbxDatum.Text), tbxBetaald.Text, Convert.ToInt32(tbxTafelNummer.Text), tbxemailadress.Text);
-            _controller.addBestelling(_bestelling1);
+            Bestelling bestelling1 = new Bestelling(Convert.ToDateTime(tbxDatum.Text), tbxBetaald.Text, Convert.ToInt32(tbxTafelNummer.Text), tbxemailadress.Text);
+            _controller.addBestelling(bestelling1);
             ClearInput();
         }
         private void ClearInput()
@@ -40,10 +40,7 @@ namespace CaféToepassing_WPF
         }
         private void btnVoegProductToe_Click(object sender, RoutedEventArgs e)
         {
-            _bestelling1 = new Bestelling(Convert.ToDateTime(tbxDatum.Text), tbxBetaald.Text, Convert.ToInt32(tbxTafelNummer.Text), tbxemailadress.Text);
-            Producten product = (Producten)(cbxProducten.SelectedItem);
-            ProductenInBestelling ProductInBestelling = new ProductenInBestelling(_bestelling1.IdBestelling, product.IdProduct, Convert.ToDouble(tbxAantal.Text)); //mijn bestellingid werkt nog niet
-            _controller.addProductenInBestelling(ProductInBestelling);
+            _controller.addProductenInBestelling(cbxProducten.SelectedIndex,Convert.ToInt32(tbxAantal.Text));
             ClearInput();
         }
     }

@@ -37,7 +37,7 @@ namespace CaféToepassing_Domain.Persistence
 			conn.Close();
 			return BestellingLijst;
 		}
-		public void addBestellingToDB(string connectionstring, Bestelling item)
+		public int addBestellingToDB(string connectionstring, Bestelling item)
 		{
 			//de connectie met de databank maken
 			MySqlConnection conn = new MySqlConnection(connectionstring);
@@ -52,7 +52,13 @@ namespace CaféToepassing_Domain.Persistence
 			cmd.Parameters.AddWithValue("Emailadres", item.Emailadres);
 			conn.Open();
 			cmd.ExecuteNonQuery();
+			MySqlCommand cmd2 = new MySqlCommand("SELECT max(idbestelling) FROM cafétoepassing_smeyers_tom_gip.bestelling", conn);
+			MySqlDataReader reader= cmd2.ExecuteReader();
+			int idBesteling=0;
+			while (reader.Read())
+			{ idBesteling = Convert.ToInt32(reader[0]); }
 			conn.Close();
+			return idBesteling;
 		}
 	}
 }

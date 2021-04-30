@@ -18,6 +18,7 @@ namespace CaféToepassing_Domain.Business
         //eigenschappen
         public int IdBestelling
         {
+            set { _idBestelling = value; }
             get { return _idBestelling; }
         }
         public DateTime Datum

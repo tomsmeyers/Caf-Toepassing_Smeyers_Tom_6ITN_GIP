@@ -1,32 +1,22 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StartPage.aspx.cs" Inherits="CaféToepassing_ASP.StartPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AddNewTafel.aspx.cs" Inherits="CaféToepassing_ASP.AddNewTafel" %>
 
 <!DOCTYPE html>
+
 <html>
 <head>
-    <title>StartPage</title>
+    <title>Nieuwe TafelPage</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link rel="stylesheet" href="Cafétoepassing.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="Cafétoepassing.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
-<style>
-    /* Full height image header */
-    body {
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-image: url("/Pictures/cafe-beginnen.jpg");
-        background-size: cover;
-    }
-    }
-</style>
 <body>
-
 
     <!-- Navbar (sit on top) -->
     <div class="w3-top">
@@ -36,9 +26,10 @@
             <!-- Right-sided navbar links -->
             <div class="w3-right w3-hide-small">
                 <a href="MenuPage.aspx" onclick="w3_close()" class="w3-bar-item w3-button">Producten</a>
-                <a href="MakeBestellingPage.aspx" onclick="w3_close()" class="w3-bar-item w3-button">Bestellen</a> 
+                <a href="MakeBestellingPage.aspx" onclick="w3_close()" class="w3-bar-item w3-button">Bestellen</a>
                 <a href="OverOns.aspx" onclick="w3_close()" class="w3-bar-item w3-button">Over Ons</a>
                 <a href="EigenaarAanmeldPage.aspx" onclick="w3_close()" class="w3-bar-item w3-button">Eigenaar</a>
+                <a href="ShowBestellingen.aspx" onclick="w3_close()" class="w3-bar-item w3-button">Show bestellingen</a>
             </div>
             <!-- Hide right-floated links on small screens and replace them with a menu icon -->
 
@@ -55,63 +46,25 @@
         <a href="MakeBestellingPage.aspx" onclick="w3_close()" class="w3-bar-item w3-button">Bestellen</a>
         <a href="OverOns.aspx" onclick="w3_close()" class="w3-bar-item w3-button">Over Ons</a>
         <a href="EigenaarAanmeldPage.aspx" onclick="w3_close()" class="w3-bar-item w3-button">Eigenaar</a>
+        <a href="ShowBestellingen.aspx" onclick="w3_close()" class="w3-bar-item w3-button">Show bestellingen</a>
     </nav>
-    <!-- Header with image -->
-    <header class="cafefoto w3-display-container" id="home">
-        <div class="w3-display-middle w3-center">
-            <span class="w3-text-white w3-hide-small" style="font-size: 100px">
-                <br>
-            </span>
-            <span class="w3-text-white w3-hide-large w3-hide-medium" style="font-size: 60px"><b>
-                <br>
-            </b></span>
-            <span>
-                <br />
-            </span>
-            <span>
-                <br />
-            </span>
-            <span>
-                <br />
-            </span>
-            <span>
-                <br />
-            </span>
-            <span>
-                <br />
-            </span>
-            <span>
-                <br />
-            </span>
-            <span>
-                <br />
-            </span>
-            <span>
-                <br />
-            </span>
-            <span>
-                <br />
-            </span>
-            <span>
-                <br />
-            </span>
-            <span>
-                <br />
-            </span>
-            <span>
-                <br />
-            </span>
-            <span>
-                <br />
-            </span>
-            <span>
-                <br />
-            </span>
-            <span>
-                <br />
-            </span>
-            <p><a href="MenuPage.aspx" class="w3-button w3-xxlarge w3-black">Laat het menu zien</a></p>
+
+    <form id="form1" runat="server">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <br />
+                    <br />
+                    <br />
+                    <h1 class="display-8">Voeg een nieuwe tafel toe:</h1>
+                    <p>Geef de positie van de tafel in: </p>
+                    <asp:TextBox ID="txtpositie" runat="server" Class="form-control"></asp:TextBox>
+                    <asp:Button ID="btnVoegToe" runat="server" Text="Toevoegen" Class="btn btn-info" OnClick="btnVoegToe_Click" />
+                </div>
+                <div class="col-sm-4"></div>
+            </div>
         </div>
-    </header>
+    </form>
 </body>
 </html>

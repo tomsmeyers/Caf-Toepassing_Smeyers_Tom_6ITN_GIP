@@ -49,16 +49,21 @@ namespace CaféToepassing_Domain.Persistence
             BestellingMapper mapper = new BestellingMapper();
             return mapper.getBestellingFromDB(_connectionString);
         }
-        public void addBestelling(Bestelling item)
+        public int addBestelling(Bestelling item)
         {
             BestellingMapper mapper = new BestellingMapper();
-            mapper.addBestellingToDB(_connectionString, item);
+            return mapper.addBestellingToDB(_connectionString, item);
         }
         //Producten in de bestelling
-        public List<ProductenInBestelling> GetProductenInBestelling()
+        public List<ProductenInBestelling> GetProductenInBestelling(int idBestelling)
         {
             ProductenInBestellingMapper mapper = new ProductenInBestellingMapper();
-            return mapper.getProductenInBestellingFromDB(_connectionString);
+            return mapper.getProductenInBestellingFromDB(_connectionString, idBestelling);
+        }
+        public List<ProductenInBestellenVoorEigenaar> GetAllProductenInBestelling()
+        {
+            ProductenInBestellingMapper mapper = new ProductenInBestellingMapper();
+            return mapper.getAllProductenInBestelling(_connectionString);
         }
         public void addProductenInBestelling(ProductenInBestelling item)
         {

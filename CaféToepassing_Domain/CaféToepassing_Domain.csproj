@@ -48,6 +48,7 @@
     <Compile Include="Business\Bestelling.cs" />
     <Compile Include="Business\Controller.cs" />
     <Compile Include="Business\Producten.cs" />
+    <Compile Include="Business\ProductenInBestellenVoorEigenaar.cs" />
     <Compile Include="Business\ProductenInBestelling.cs" />
     <Compile Include="Business\Tafel.cs" />
     <Compile Include="Persistence\BestellingMapper.cs" />

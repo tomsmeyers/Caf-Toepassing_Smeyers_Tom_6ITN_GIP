@@ -10,52 +10,65 @@ namespace CaféToepassing_Domain.Business
     public class Controller
     {
         //velden
-        private Persistence.Controller _persistController;
+        private Persistence.Controller _controller;
+        private Bestelling _actieveBestelling;
 
         //constructor
         public Controller()
         {
-            _persistController = new Persistence.Controller();
+            _controller = new Persistence.Controller();
         }
         public Controller(string connstring)
         {
-            _persistController = new Persistence.Controller(connstring);
+            _controller = new Persistence.Controller(connstring);
         }
         //producten
         public List<Producten> getProducten()
         {
-            return _persistController.GetProducten();
+            return _controller.GetProducten();
         }
         public void addProducten(Producten item)
         {
-            _persistController.addProducten(item);
+            _controller.addProducten(item);
         }
         //tafels
         public List<Tafel> GetTafels()
         {
-            return _persistController.GetTafel();
+            return _controller.GetTafel();
         }
         public void addTafel(Tafel item)
         {
-            _persistController.addTafel(item);
+            _controller.addTafel(item);
         }
         //bestellingen
         public List<Bestelling> GetBestellingen()
         {
-            return _persistController.GetBestelling();
+            return _controller.GetBestelling();
         }
-        public void addBestelling(Bestelling item)
+        public bool addBestelling(Bestelling item)
         {
-            _persistController.addBestelling(item);
+            try
+            {
+
+                item.IdBestelling = _controller.addBestelling(item);
+                _actieveBestelling = item;
+            }
+            catch { return false; }
+            return true;
         }
         //producten in bestelling
         public List<ProductenInBestelling> GetProductenInBestelling()
         {
-            return _persistController.GetProductenInBestelling();
+            return _controller.GetProductenInBestelling(_actieveBestelling.IdBestelling);
         }
-        public void addProductenInBestelling(ProductenInBestelling item)
+        public List<ProductenInBestellenVoorEigenaar> GetAllProductenInBestelling()
         {
-            _persistController.addProductenInBestelling(item);
+            return _controller.GetAllProductenInBestelling();
+        }
+        public void addProductenInBestelling(int indexProduct, int aantal)
+        {
+            ProductenInBestelling item = new ProductenInBestelling(_actieveBestelling.IdBestelling, _controller.GetProducten()[indexProduct].IdProduct, aantal);
+            _controller.addProductenInBestelling(item);
         }
     }
 }
