@@ -50,6 +50,7 @@
         <div class="container">
             <br />
             <br />
+            <br />
             <h1 class="display-4">Selecteer artikelen die u wilt bestellen</h1>
 
             <div class="row">
@@ -61,8 +62,10 @@
                 </div>
                 <div class="col-sm-2">
                     <h1></h1>
-                    <asp:ImageButton ID="VoegProductToe" ImageUrl="~/Pictures/Pijl.png" ImageAlign="Middle" Height="75" Width="150" runat="server" OnClick="VoegProductToe_Click" />
-                    <asp:ImageButton ID="DeleteProduct" ImageUrl="~/Pictures/PijlNaarLinks.png" ImageAlign="Middle" Height="75" Width="150" runat="server" OnClick="DeleteProduct_Click" />
+                    <br />
+                    <br />
+                    <asp:ImageButton ID="VoegProductToe" ImageUrl="~/Pictures/PijlRechts.png" ImageAlign="Middle" Height="75" Width="150" runat="server" OnClick="VoegProductToe_Click" />
+                    <asp:ImageButton ID="DeleteProduct" ImageUrl="~/Pictures/PijlLinks.png" ImageAlign="Middle" Height="75" Width="150" runat="server" OnClick="DeleteProduct_Click" />
                 </div>
                 <div class="col-sm-5">
                     <h1>Jouw items</h1>

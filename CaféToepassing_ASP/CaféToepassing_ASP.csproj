@@ -82,8 +82,8 @@
     <Content Include="OverOns.aspx" />
     <Content Include="Pictures\cafe-beginnen.jpg" />
     <Content Include="Pictures\Café2.0.jpg" />
-    <Content Include="Pictures\Pijl.png" />
-    <Content Include="Pictures\PijlNaarLinks.png" />
+    <Content Include="Pictures\PijlLinks.PNG" />
+    <Content Include="Pictures\PijlRechts.PNG" />
     <Content Include="ShowBestellingen.aspx" />
     <Content Include="StartPage.aspx" />
     <Content Include="Web.config" />
