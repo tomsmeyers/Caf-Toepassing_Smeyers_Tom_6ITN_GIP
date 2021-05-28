@@ -65,7 +65,11 @@ namespace CaféToepassing_Domain.Persistence
             ProductenInBestellingMapper mapper = new ProductenInBestellingMapper();
             return mapper.getAllProductenInBestelling(_connectionString);
         }
-
+        public bool DeleteProductenInBestelling(int idProduct, int idBestelling)
+        {
+            ProductenInBestellingMapper mapper = new ProductenInBestellingMapper();
+            return mapper.DeleteProductenInBestelling(_connectionString, idProduct, idBestelling);
+        }
 
         public List<ProductenInBestellenVoorEigenaar> GetPersonalProductenInBestelling(int idBestelling)
         {
@@ -83,11 +87,6 @@ namespace CaféToepassing_Domain.Persistence
             {
                 mapper.updateProductenInBestellingToDB(_connectionString, item);
             }
-        }
-        public bool DeleteProductenInBestelling(int idProduct, int idBestelling)
-        {
-            ProductenInBestellingMapper mapper = new ProductenInBestellingMapper();
-            return mapper.DeleteProductenInBestelling(_connectionString, idProduct, idBestelling);
         }
         public double GetPrijsProductenInBestelling(int idBestelling)
         {

@@ -65,6 +65,11 @@ namespace CaféToepassing_Domain.Business
             ProductenInBestelling item = new ProductenInBestelling(_actieveBestelling.IdBestelling, _controller.GetProducten()[indexProduct].IdProduct, aantal);
             _controller.addProductenInBestelling(item);
         }
+        public bool DeleteProductFromBestelling(int index)
+        {
+            ProductenInBestelling productInBestelling = _controller.GetProductenInBestelling(_actieveBestelling.IdBestelling)[index];
+            return _controller.DeleteProductenInBestelling(productInBestelling.IdProducten, productInBestelling.IdBestelling);
+        }
         //Producten in Bestelling voor eigenaar
         public List<ProductenInBestellenVoorEigenaar> GetAllProductenInBestelling()
         {
