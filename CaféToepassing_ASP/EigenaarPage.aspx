@@ -97,11 +97,9 @@
         <div class="row">
             <div class="col-md-6">
                 <a href="AddNewTafel.aspx" class="btn btn-dark btn-block">Voeg een tafel toe</a>
-                <a href="DeleteTafel.aspx" class="btn btn-dark btn-block">Verwijder een tafel</a>
             </div>
              <div class="col-md-6">
                 <a href="AddNewProduct.aspx" class="btn btn-dark btn-block">Voeg een product toe</a>
-                <a href="DeleteProduct.aspx" class="btn btn-dark btn-block">Verwijder een product</a>
             </div>
         </div>
         <!--Table Producten-->

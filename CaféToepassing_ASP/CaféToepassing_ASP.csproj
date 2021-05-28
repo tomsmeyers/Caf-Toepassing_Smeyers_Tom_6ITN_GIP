@@ -75,8 +75,6 @@
     <Content Include="AddNewTafel.aspx" />
     <Content Include="BestelPage.aspx" />
     <Content Include="Cafétoepassing.css" />
-    <Content Include="DeleteProduct.aspx" />
-    <Content Include="DeleteTafel.aspx" />
     <Content Include="EigenaarAanmeldPage.aspx" />
     <Content Include="EigenaarPage.aspx" />
     <Content Include="MakeBestellingPage.aspx" />
@@ -111,20 +109,6 @@
     </Compile>
     <Compile Include="BestelPage.aspx.designer.cs">
       <DependentUpon>BestelPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DeleteProduct.aspx.cs">
-      <DependentUpon>DeleteProduct.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DeleteProduct.aspx.designer.cs">
-      <DependentUpon>DeleteProduct.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DeleteTafel.aspx.cs">
-      <DependentUpon>DeleteTafel.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DeleteTafel.aspx.designer.cs">
-      <DependentUpon>DeleteTafel.aspx</DependentUpon>
     </Compile>
     <Compile Include="EigenaarAanmeldPage.aspx.cs">
       <DependentUpon>EigenaarAanmeldPage.aspx</DependentUpon>
