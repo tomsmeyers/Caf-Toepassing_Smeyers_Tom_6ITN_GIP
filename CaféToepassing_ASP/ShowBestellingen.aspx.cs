@@ -29,39 +29,74 @@ namespace CaféToepassing_ASP
                 {
                     _controller = (Controller)HttpContext.Current.Session["_controller"];
                 }
+                gridBestellingen.DataSource = _controller.GetBestellingen();
+                gridBestellingen.DataBind();
             }
         }
-        public string OpdrachtBestelling()
-        {
-            List<Bestelling> OpdrachtoefeningList = _controller.GetBestellingen();
+         
 
-            string htmlStr = "";
-            foreach (Bestelling opdrachtoefening in OpdrachtoefeningList)
-            {
-                htmlStr += "<tr>";
-                htmlStr += "<td>" + opdrachtoefening.IdBestelling + "</td>";
-                htmlStr += "<td>" + opdrachtoefening.Datum + "</td>";
-                htmlStr += "<td>" + opdrachtoefening.Betaald + "</td>";
-                htmlStr += "<td>" + opdrachtoefening.TafelNummer + "</td>";
-                htmlStr += "<td>" + opdrachtoefening.Emailadres + "</td>";
-                htmlStr += "</tr>";
-            }
-            return htmlStr;
-        }
-        public string OpdrachtProductenInBestelling()
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<ProductenInBestellenVoorEigenaar> OpdrachtoefeningList = _controller.GetAllProductenInBestelling();
-
-            string htmlStr = "";
-            foreach (ProductenInBestellenVoorEigenaar opdrachtoefening in OpdrachtoefeningList)
-            {
-                htmlStr += "<tr>";
-                htmlStr += "<td>" + opdrachtoefening.IdBestelling + "</td>";
-                htmlStr += "<td>" + opdrachtoefening.NaamProduct + "</td>";
-                htmlStr += "<td>" + opdrachtoefening.Aantal + "</td>";
-                htmlStr += "</tr>";
-            }
-            return htmlStr;
+            DataKey bestellingid = gridBestellingen.DataKeys[gridBestellingen.SelectedIndex];
+           
+            //List<ProductenInBestellenVoorEigenaar> OpdrachtoefeningList = _controller.GetAllProductenInBestelling();
+            List<ProductenInBestellenVoorEigenaar> OpdrachtoefeningList = _controller.GetProductenInBestelling(Convert.ToInt32(bestellingid.Value));
+            gridProductenInBestellingen.DataSource = OpdrachtoefeningList;
+            gridProductenInBestellingen.DataBind();
         }
+
+        protected string ButtonValue(object objType)
+        {
+            if (objType.ToString() == "Ja")
+            {
+                return "Ja";
+            }
+            else
+            {
+                return "Betalen";
+            }
+
+        }
+
+        protected bool CheckBoxValue(object objType)
+        {
+            if (objType.ToString() == "Ja")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+
+        protected bool ButtonEnabled(object objType)
+        {
+            if (objType.ToString() == "Ja")
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+        protected void Betaald_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int bestellingid = int.Parse(btn.CommandArgument);
+
+            //controller oproepen en bij bestelling betaald op ja zetten
+            _controller.UpdateBetaalstatusBestelling(bestellingid, "Ja");
+            gridBestellingen.DataSource = _controller.GetBestellingen();
+            gridBestellingen.DataBind();
+
+        }
+
+       
     }
 }
+

@@ -65,10 +65,42 @@ namespace CaféToepassing_Domain.Persistence
             ProductenInBestellingMapper mapper = new ProductenInBestellingMapper();
             return mapper.getAllProductenInBestelling(_connectionString);
         }
+
+
+        public List<ProductenInBestellenVoorEigenaar> GetPersonalProductenInBestelling(int idBestelling)
+        {
+            ProductenInBestellingMapper mapper = new ProductenInBestellingMapper();
+            return mapper.getPersonalProductenInBestelling(_connectionString, idBestelling);
+        }
         public void addProductenInBestelling(ProductenInBestelling item)
         {
             ProductenInBestellingMapper mapper = new ProductenInBestellingMapper();
-            mapper.addProductenInBestellingToDB(_connectionString, item);
+            try
+            {
+                mapper.addProductenInBestellingToDB(_connectionString, item);
+            }
+            catch(Exception ex)
+            {
+                mapper.updateProductenInBestellingToDB(_connectionString, item);
+            }
         }
+        public bool DeleteProductenInBestelling(int idProduct, int idBestelling)
+        {
+            ProductenInBestellingMapper mapper = new ProductenInBestellingMapper();
+            return mapper.DeleteProductenInBestelling(_connectionString, idProduct, idBestelling);
+        }
+        public double GetPrijsProductenInBestelling(int idBestelling)
+        {
+            ProductenInBestellingMapper mapper = new ProductenInBestellingMapper();
+            return mapper.GetTussenTotaal(_connectionString, idBestelling);
+        }
+
+        public void UpdateBetaalstatusBestelling(int IdBestelling, string betaald)
+        {
+            BestellingMapper mapper = new BestellingMapper();
+            mapper.updateBestellingToDB(_connectionString, IdBestelling, betaald);
+        }
+
+
     }
 }

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using CaféToepassing_Domain.Business;
+using System.Web.UI.HtmlControls;
 
 namespace CaféToepassing_ASP
 {
@@ -41,22 +42,51 @@ namespace CaféToepassing_ASP
         }
         private void fillPersonalList()
         {
-            List<ProductenInBestelling> JouwItems = _controller.GetProductenInBestelling();
+            List<ProductenInBestellenVoorEigenaar> JouwItems = _controller.GetPersonalProductenInBestelling();
             lbxJouwItems.DataSource = JouwItems;
             lbxJouwItems.DataBind();
             lbxJouwItems.Rows = lbxAllItemsList.Items.Count;
         }
+        private void fillTijdelijkTotaal()
+        {
+            double Prijs = _controller.GetPrijsProductenInBestelling();
+            lblTijdelijkTotaal.Text = "€" + Convert.ToString(Math.Round(Prijs,2));
+        }
+        protected void ClearControls()
+        {
+            txtAantal.Text = "";
+        }
         protected void VoegProductToe_Click(object sender, EventArgs e)
         {
-            _controller.addProductenInBestelling(lbxAllItemsList.SelectedIndex, Convert.ToInt32(txtAantal.Text));
+            if (int.TryParse(txtAantal.Text, out int aantal))
+            {
+
+                _controller.addProductenInBestelling(lbxAllItemsList.SelectedIndex, Convert.ToInt32(txtAantal.Text));
+                fillGeneralList();
+                fillPersonalList();
+                fillTijdelijkTotaal();
+                ClearControls();
+            }
+            else
+            {
+                Response.Write("<script>alert('aantal niet correct.')</script>");
+            }
+        }
+        protected void DeleteProduct_Click(object sender, EventArgs e)
+        {
+            _controller.DeleteProductFromBestelling(lbxJouwItems.SelectedIndex);
             fillGeneralList();
             fillPersonalList();
-
+            fillTijdelijkTotaal();
+            ClearControls();
         }
         protected void ButtonAfrekenen_Click(object sender, EventArgs e)
         {
             Response.Write("<script>alert('Uw bestelling is gemaakt en zal aan uw tafel geleverd worden!')</script>");
-            Response.Redirect("MakeBestellingPage.aspx");
+            HtmlMeta meta = new HtmlMeta();
+            meta.HttpEquiv = "Refresh";
+            meta.Content = "1;url=StartPage.aspx";
+            this.Page.Controls.Add(meta);
         }
     }
 }

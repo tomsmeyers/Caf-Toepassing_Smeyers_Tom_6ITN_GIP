@@ -33,7 +33,7 @@ namespace CaféToepassing_ASP
         }
         protected void btnMakeBestelling_Click(object sender, EventArgs e)
         {
-            Bestelling bestelling1 = new Bestelling(DateTime.Now ,txtBetaald.Text, Convert.ToInt32(txtTafelnummer.Text), txtEmailadress.Text);
+            Bestelling bestelling1 = new Bestelling(DateTime.Now ,"Nee", Convert.ToInt32(txtTafelnummer.Text), txtEmailadress.Text);
             if (_controller.addBestelling(bestelling1))
             {
                 ClearInput();
@@ -42,17 +42,14 @@ namespace CaféToepassing_ASP
             else
             {
                 Response.Write("<script>alert('Gegevens niet correct.')</script>");
-                txtBetaald.Text = "";
-                txtEmailadress.Text = "";
-                txtTafelnummer.Text = "";
-                txtBetaald.Focus();
+                ClearInput();
             }
         }
         protected void ClearInput()
         {
-            txtBetaald.Text = "";
             txtEmailadress.Text = "";
             txtTafelnummer.Text = "";
+            txtEmailadress.Focus();
         }
     }
 }

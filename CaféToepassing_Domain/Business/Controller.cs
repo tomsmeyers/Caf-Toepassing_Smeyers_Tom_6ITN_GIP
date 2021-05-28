@@ -49,7 +49,6 @@ namespace CaféToepassing_Domain.Business
         {
             try
             {
-
                 item.IdBestelling = _controller.addBestelling(item);
                 _actieveBestelling = item;
             }
@@ -61,14 +60,38 @@ namespace CaféToepassing_Domain.Business
         {
             return _controller.GetProductenInBestelling(_actieveBestelling.IdBestelling);
         }
-        public List<ProductenInBestellenVoorEigenaar> GetAllProductenInBestelling()
-        {
-            return _controller.GetAllProductenInBestelling();
-        }
         public void addProductenInBestelling(int indexProduct, int aantal)
         {
             ProductenInBestelling item = new ProductenInBestelling(_actieveBestelling.IdBestelling, _controller.GetProducten()[indexProduct].IdProduct, aantal);
             _controller.addProductenInBestelling(item);
+        }
+        public bool DeleteProductFromBestelling(int index)
+        {
+            ProductenInBestelling productInBestelling = _controller.GetProductenInBestelling(_actieveBestelling.IdBestelling)[index];
+            return _controller.DeleteProductenInBestelling(productInBestelling.IdProducten, productInBestelling.IdBestelling);
+        }
+        //Producten in Bestelling voor eigenaar
+        public List<ProductenInBestellenVoorEigenaar> GetAllProductenInBestelling()
+        {
+            return _controller.GetAllProductenInBestelling();
+        }
+        public List<ProductenInBestellenVoorEigenaar> GetPersonalProductenInBestelling()
+        {
+            return _controller.GetPersonalProductenInBestelling(_actieveBestelling.IdBestelling);
+        }
+        public List<ProductenInBestellenVoorEigenaar> GetProductenInBestelling(int bestellingid)
+        {
+            return _controller.GetPersonalProductenInBestelling(bestellingid);
+        }
+        //prijs van de producten in de bestelling
+        public double GetPrijsProductenInBestelling()
+        {
+            return _controller.GetPrijsProductenInBestelling(_actieveBestelling.IdBestelling);
+        }
+
+        public void UpdateBetaalstatusBestelling(int bestellingid, string betaald)
+        {
+            _controller.UpdateBetaalstatusBestelling(bestellingid, betaald);
         }
     }
 }

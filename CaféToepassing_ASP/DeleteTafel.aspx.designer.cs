@@ -11,7 +11,7 @@ namespace CaféToepassing_ASP
 {
 
 
-    public partial class ShowBestellingen
+    public partial class DeleteTafel
     {
 
         /// <summary>
@@ -24,21 +24,21 @@ namespace CaféToepassing_ASP
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// gridBestellingen control.
+        /// lbxTafels control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridBestellingen;
+        protected global::System.Web.UI.WebControls.ListBox lbxTafels;
 
         /// <summary>
-        /// gridProductenInBestellingen control.
+        /// btnDeleteTafal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridProductenInBestellingen;
+        protected global::System.Web.UI.WebControls.Button btnDeleteTafal;
     }
 }

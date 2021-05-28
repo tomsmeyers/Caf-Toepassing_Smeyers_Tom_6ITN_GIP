@@ -44,7 +44,7 @@ namespace CaféToepassing_Domain.Business
         }
         public override string ToString()
         {
-            return _idProducten + " - " + _productNaam + " € " + _prijsProduct;
+            return _idProducten + " - " + _productNaam + " € " + Math.Round(_prijsProduct,2);
         }
     }
 }

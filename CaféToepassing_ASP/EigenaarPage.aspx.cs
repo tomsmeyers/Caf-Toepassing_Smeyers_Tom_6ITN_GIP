@@ -54,7 +54,7 @@ namespace CaféToepassing_ASP
                 htmlStr += "<tr>";
                 htmlStr += "<td>" + opdrachtoefening.IdProduct + "</td>";
                 htmlStr += "<td>" + opdrachtoefening.ProductNaam + "</td>";
-                htmlStr += "<td>" + "€" + opdrachtoefening.PrijsProduct + "</td>";
+                htmlStr += "<td>" + "€" + Math.Round(opdrachtoefening.PrijsProduct,2) + "</td>";
                 htmlStr += "</tr>";
             }
             return htmlStr;

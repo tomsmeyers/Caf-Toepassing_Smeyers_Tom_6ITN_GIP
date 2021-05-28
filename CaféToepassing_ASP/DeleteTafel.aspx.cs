@@ -8,10 +8,9 @@ using CaféToepassing_Domain.Business;
 
 namespace CaféToepassing_ASP
 {
-    public partial class MenuPage : System.Web.UI.Page
+    public partial class DeleteTafel : System.Web.UI.Page
     {
         private Controller _controller;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack)
@@ -30,21 +29,21 @@ namespace CaféToepassing_ASP
                 {
                     _controller = (Controller)HttpContext.Current.Session["_controller"];
                 }
+                FillTafelList();
             }
+
         }
-        public string OpdrachtProducten()
+        private void FillTafelList()
         {
-            List<Producten> OpdrachtoefeningList = _controller.getProducten();
-            string htmlStr = "";
-            foreach (Producten opdrachtoefening in OpdrachtoefeningList)
-            {
-                htmlStr += "<tr>";
-                htmlStr += "<td>" + opdrachtoefening.IdProduct + "</td>";
-                htmlStr += "<td>" + opdrachtoefening.ProductNaam + "</td>";
-                htmlStr += "<td>" + "€" +Math.Round(opdrachtoefening.PrijsProduct,2) + "</td>";
-                htmlStr += "</tr>";
-            }
-            return htmlStr;
+            List<Tafel> AlleItems = _controller.GetTafels();
+            lbxTafels.DataSource = AlleItems;
+            lbxTafels.DataBind();
+            lbxTafels.Rows = lbxTafels.Items.Count;
+        }
+        protected void btnDeleteTafel_Click(object sender, EventArgs e)
+        {
+            //tafel nog als inactief kunnen zetten
+            Response.Redirect("EigenaarPage.aspx");
         }
     }
 }

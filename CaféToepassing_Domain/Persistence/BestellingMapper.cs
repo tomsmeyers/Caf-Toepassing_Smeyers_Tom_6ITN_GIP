@@ -60,5 +60,23 @@ namespace CaféToepassing_Domain.Persistence
 			conn.Close();
 			return idBesteling;
 		}
+
+		public void updateBestellingToDB(string connectionstring, int IdBestelling, string betaald)
+		{
+			//de connectie met de databank maken
+			MySqlConnection conn = new MySqlConnection(connectionstring);
+
+			//Het SQL-commando definiëren
+			string opdracht = "UPDATE cafétoepassing_smeyers_tom_gip.bestelling" +
+				" SET betaald = @betaald" +
+				" WHERE idbestelling = @idBestelling";
+			MySqlCommand cmd = new MySqlCommand(opdracht, conn);
+			//voeg de waarden toe, je haalt ze uit het object eval
+			cmd.Parameters.AddWithValue("Betaald", betaald);
+			cmd.Parameters.AddWithValue("idBestelling", IdBestelling);
+			
+			conn.Open();
+			cmd.ExecuteNonQuery();
+		}
 	}
 }

@@ -45,7 +45,7 @@ namespace CaféToepassing_Domain.Business
         }
         public override string ToString()
         {
-            return "Product id: "+ _idProducten + " in bestelling: " + _idBestelling + " en " + _aantal + " keer"; 
+            return "U bestelt product id: "+ _idProducten + " || " + _aantal + " keer"; 
         }
     }
 }

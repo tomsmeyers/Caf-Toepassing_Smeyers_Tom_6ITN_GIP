@@ -1,8 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EigenaarAanmeldPage.aspx.cs" Inherits="CaféToepassing_ASP.EigenaarAanmeldPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DeleteProduct.aspx.cs" Inherits="CaféToepassing_ASP.DeleteProduct" %>
 
 <!DOCTYPE html>
+
 <html>
 <head>
+    <title>Nieuwe TafelPage</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -13,9 +15,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <title>Aanmelden eigenaar</title>
 </head>
 <body>
+
     <!-- Navbar (sit on top) -->
     <div class="w3-top">
         <div class="w3-bar w3-white w3-card" id="NavigatieBar">
@@ -44,6 +46,7 @@
         <a href="OverOns.aspx" onclick="w3_close()" class="w3-bar-item w3-button">Over Ons</a>
         <a href="EigenaarAanmeldPage.aspx" onclick="w3_close()" class="w3-bar-item w3-button">Eigenaar</a>
     </nav>
+
     <form id="form1" runat="server">
         <div class="container text-center">
             <div class="row">
@@ -51,12 +54,10 @@
                 <div class="col-md-6">
                     <br />
                     <br />
-                    <h1 class="display-4">Eigenaar Login</h1>
-                    <p>Geef je naam in: </p>
-                    <asp:TextBox ID="txtNaam" runat="server" Class="form-control"></asp:TextBox>
-                    <p>Geef je paswoord in: </p>
-                    <asp:TextBox ID="txtPaswoord" runat="server" TextMode="Password" Class="form-control"></asp:TextBox>
-                    <asp:Button ID="btnLogin" runat="server" Text="Login" Class="btn btn-info" OnClick="btnLogin_Click" />
+                    <br />
+                    <h1 class="display-8">Welk product wil je verwijderen:</h1>
+                    <asp:ListBox ID="lbxProducten" class="form-control" runat="server"></asp:ListBox>
+                    <asp:Button ID="btnDeleteProduct" runat="server" Text="Verwijderen" Class="btn btn-info" OnClick="btnDeleteProduct_Click" />
                 </div>
                 <div class="col-sm-4"></div>
             </div>

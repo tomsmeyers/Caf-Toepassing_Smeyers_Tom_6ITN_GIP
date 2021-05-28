@@ -51,5 +51,5 @@ namespace CaféToepassing_Domain.Persistence
 			cmd.ExecuteNonQuery();
 			conn.Close();
 		}
-    }
+	}
 }
